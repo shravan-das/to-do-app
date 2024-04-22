@@ -1,0 +1,37 @@
+<div class="conatiner">
+
+    <h1 class="text-center"> Do It Now Application</h1>
+    <a href="#" routerLink="/post/create/" class="btn btn-success"> create Task</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Body
+                </th>
+                <th class="w-60">
+                    Action
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let post of posts">
+                <td>{{post.id}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.body}}</td>
+                <td>
+                    <a href="#" [routerLink]="['/post/', post.id, 'view']" class="btn btn-info mr-2">View</a>
+                    <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="btn btn-primary mr-2">Edit</a>
+                    <button class="btn btn-danger" type="button" (click)="deletePost(post.id)">Delete</button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
