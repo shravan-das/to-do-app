@@ -11,7 +11,7 @@ import { Post } from './post';
 })
 export class PostService {
 
-  private apiURL = "https://shravan-das.github.io/client/db.json";
+  private apiURL = "http://localhost:3000/tasks";
 
   httpOptions = {
     headers: new HttpHeaders({
