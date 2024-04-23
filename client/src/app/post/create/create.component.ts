@@ -21,7 +21,8 @@ export class CreateComponent {
     this.form = new FormGroup({
       id: new FormControl('', [Validators.required]),
       title: new FormControl('', [Validators.required]),
-      body: new FormControl('', [Validators.required])
+      body: new FormControl('', [Validators.required]),
+      IsLiked: new FormControl(false, [Validators.required])
     })
 
   }

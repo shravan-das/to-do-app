@@ -1,8 +1,13 @@
 <div class="conatiner">
 
     <h1 class="text-center"> Do It Now Application</h1>
-    <a href="#" routerLink="/post/create/" class="btn btn-success"> create Task</a>
-    <table class="table table-striped">
+    <div class="flex justify-center my-4">
+    <a href="#" routerLink="/post/create/" class="btn btn-success mr-10"> create Task</a>
+    <a href="#" routerLink="/post/liked/" class="btn btn-success"> liked Task</a>
+
+    </div>    
+   
+    <table class="table mt-8 table-striped">
         <thead>
             <tr>
                 <th>
@@ -21,17 +26,21 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let post of posts">
-                <td>{{post.id}}</td>
-                <td>{{post.title}}</td>
-                <td>{{post.body}}</td>
-                <td>
-                    <a href="#" [routerLink]="['/post/', post.id, 'view']" class="btn btn-info mr-2">View</a>
-                    <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="btn btn-primary mr-2">Edit</a>
-                    <button class="btn btn-danger" type="button" (click)="deletePost(post.id)">Delete</button>
-                </td>
-                
-            </tr>
+            @for (post of posts; track $index) {
+                <tr>
+                    <td>{{post.id}}</td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.body}}</td>
+                    <td>
+                        <button class="btn btn-link"  (click)="updateLikeStatus(post.id,post)">
+                            <i class="fas fa-heart"  [class.text-danger]="isLiked(post)" ></i>
+                        </button>
+                        <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="btn btn-primary mr-2">Edit</a>
+                        <button class="btn btn-danger" type="button" (click)="deletePost(post.id)">Delete</button>
+                    </td>
+    
+                </tr>
+            }
         </tbody>
     </table>
 </div>

@@ -1,0 +1,30 @@
+<table class="table mt-8 table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Body
+            </th>
+            <th class="w-60">
+                Action
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let post of likedPosts">
+            <td>{{post.id}}</td>
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
+            <td>
+        
+            </td>
+
+        </tr>
+    </tbody>
+</table>

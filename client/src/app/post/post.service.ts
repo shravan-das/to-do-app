@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import {  Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 
 import { Post } from './post';
 
@@ -64,6 +64,22 @@ export class PostService {
       catchError(this.errorHandler)
     )
   }
+
+  UpdateLike(id: number, post: Post): Observable<any> {
+    return this.httpClient.get<Post>(`${this.apiURL}/${id}`).pipe(
+      switchMap((existingPost: Post) => {
+        const updatedPost: Post = {
+          ...existingPost,
+          IsLiked: !existingPost.IsLiked
+        };
+       return this.httpClient.put(`${this.apiURL}/${id}`, updatedPost, this.httpOptions);
+      }),
+      catchError(this.errorHandler)
+    );
+  }
+  
+
+ 
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
