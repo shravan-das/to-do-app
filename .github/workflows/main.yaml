@@ -24,7 +24,8 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: client/dist/browser
-          branch: main     
+          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}     
 
 
 
